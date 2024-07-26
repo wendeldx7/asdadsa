@@ -5,7 +5,7 @@ const tableMotorista = /*sql*/ `
         id VARCHAR(255) PRIMARY KEY,
         nome VARCHAR(255) NOT NULL,
         data_nascimento DATE NOT NULL,
-        numero_carteira int NOT NULL,
+        numero_carteira varchar(255) NOT NULL,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         update_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
     )

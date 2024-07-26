@@ -1,15 +1,20 @@
 import conn from "../config/conn.js";
 
-const tableOnibus = /*sql*/ `
+const tableOnibus = /*sql*/`
     CREATE TABLE IF NOT EXISTS onibus (
         id VARCHAR(255) PRIMARY KEY,
-        placa int (10) not null,
+        placa varchar(255) not null,
         modelo varchar(255) not null,
-        ano_fabricação date not null,
+        ano_fabricacao year(4) not null,
          capacidade int not null,
          motorista_id varchar(255) not null,
+         linhas_id varchar(255) not null,
+
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        update_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+        update_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+      
+        foreign key (motorista_id) references motorista(id),
+        foreign key (linhas_id) references linhas(id)
     )
 `;
 conn.query(tableOnibus, (err, result, field) => {
